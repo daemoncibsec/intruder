@@ -3,7 +3,7 @@
   <br>
 </h1>
 
-Intruder is a tool for remote communication between computers. At the moment, **is just a concept of a C2 server**, that allows remote control over the clients, and **though it's functional, it doesn't implement yet the functionalities that characterize this type of sotfware**. In the future, I'll implement functionalities such as SSL encryptation or DNS communication to bypass defensive software such as firewalls, but at the moment, **it's in development**.
+Intruder is a tool for remote communication between computers. At the moment, **is just a concept of a C2 server**, that allows remote control over the clients, and **though it's functional, it doesn't implement yet the functionalities that characterize this type of sotfware**. In the future, I'll implement functionalities such as SSL encryption or DNS communication to bypass defensive software such as firewalls, but at the moment, **it's in development**.
 
 ## Installation
 
