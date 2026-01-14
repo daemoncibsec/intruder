@@ -10,6 +10,7 @@ Intruder is a tool for remote communication between computers. At the moment, **
 ```bash
 git clone https://github.com/daemoncibsec/intruder.git
 cd intruder
+pip install -r requirements.txt
 ```
 
 Additionally, you can make it a binary in Linux systems using these "cython" library, so you don't have to move between folders, and have it implemented in your system as well as with other commands.
@@ -17,9 +18,7 @@ Additionally, you can make it a binary in Linux systems using these "cython" lib
 - For the client:
 
 ```bash
-pip install cython
-python3 -m cython intruder.py --embed
-gcc -Os $(python3-config --includes) intruder.c -o intruder $(python3-config --ldflags --embed)
+./generate_intruder 192.168.0.1 6789
 ```
 
 - For the server:
@@ -27,7 +26,7 @@ gcc -Os $(python3-config --includes) intruder.c -o intruder $(python3-config --l
 ```bash
 pip install cython
 python3 -m cython server_intruder.py --embed
-gcc -Os $(python3-config --includes) server_intruder.c -o server_intruder $(python3-config --ldflags --embed)
+gcc -Os $(python3-config --includes) server_intruder.c -o marrow $(python3-config --ldflags --embed)
 ```
 
 ## Usage/Examples
@@ -60,10 +59,6 @@ In case you have the script compiled with cython and gcc:
 ```bash
 ./intruder
 ```
-
-## Demonstration
-
-- [Video demonstration](https://www.instagram.com/p/DQAKejQCbJw/)
 
 ## Authors
 
