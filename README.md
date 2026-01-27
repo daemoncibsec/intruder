@@ -63,3 +63,7 @@ In case you have the script compiled with cython and gcc:
 ## Authors
 
 - [@daemoncibsec](https://www.github.com/daemoncibsec)
+
+## Testers
+
+- [@javij27](https://mrtecno.jjimenezg.es/)
