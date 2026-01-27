@@ -15,10 +15,16 @@ pip install -r requirements.txt
 
 Additionally, you can make it a binary in Linux systems using these "cython" library, so you don't have to move between folders, and have it implemented in your system as well as with other commands.
 
-- For the client:
+- For the client (Linux Malware):
 
 ```bash
 ./generate_intruder 192.168.0.1 6789
+```
+
+- For the client (Windows Malware):
+
+```powershell
+pyinstaller -F .\intruder.py
 ```
 
 - For the server:
