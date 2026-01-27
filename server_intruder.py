@@ -13,7 +13,7 @@ def start_server(host='', port=6789):
         server_socket.listen()
         display_header()
         print(f"Listening at {host}:{port}\nWaiting for incoming connections.\n")
-        threading.Thread(target=await_connections, args=(server_socket,), daemon=True).start()
+        threading.Thread(target=connections, args=(server_socket,), daemon=True).start()
         terminal()
     except KeyboardInterrupt:
         print("\n\nServer shutting down...")
@@ -31,7 +31,7 @@ def display_header():
 01100100 01100001 00110011 01101101 00110000 01101110 
 """)
 
-def await_connections(server_socket):
+def connections(server_socket):
     try:
         flag = False
         while flag != True:

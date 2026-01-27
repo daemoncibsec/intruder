@@ -23,6 +23,7 @@ generate() {
 	mv dist/intruder ./
 	rmdir dist
 	rm intruder.spec
+	chmod 777 intruder
 }
 
 main() {
