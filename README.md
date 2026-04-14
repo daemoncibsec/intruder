@@ -100,7 +100,7 @@ Agents gathered:
 Each agent posses an unique identified (in this case, since it's the first agent we've gathered, it has the ID '0') that is used to interact with the victim's system. Also, along with the ID of the agent, we get to view it's IP address and port number to be able to identify multiple connections from a single victim. To be able to obtain access to the victim's system, we use the `!intrude` command like it's shown below.
 
 ```bash
-!intrude 0
+>> !intrude 0
 
 Shell@127.0.0.1:52642 >>>
 ```
