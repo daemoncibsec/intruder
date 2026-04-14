@@ -66,6 +66,12 @@ In case you have the script compiled with cython and gcc:
 ./intruder
 ```
 
+## Known vulnerabilities and bugs
+
+- When starting the server, the port 6789 doesn't check which software the client is using to connect to the server, which allows the client to manipulate the information being sent to the server. This can't harm the computer, but it causes poor reception of requests.
+- The server doesn't check for duplicated conections from a client, which means that a client can spam the server with connections potentially crashing it (there is also no command implemented that allows the host to disconnect someone from the server, so, yeah, I'll have to fix that).
+- The client's software data is fully unencrypted, which means that a competitive reverse engineer could discover the IP of the server it is connecting to really easily.
+
 ## Authors
 
 - [@daemoncibsec](https://www.github.com/daemoncibsec)
