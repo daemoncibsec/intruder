@@ -34,7 +34,7 @@ generate_c() {
 	sed -E "s/(PORT *)\"[^\"]*\"/\1$port/" tmp_intruder.txt > tmp_intruder2.txt
 	mv tmp_intruder2.txt intrunix.c
 	gcc intrunix.c -o intrunix
-	chmod 777 intruder
+	chmod 777 intrunix
 }
 
 main() {
